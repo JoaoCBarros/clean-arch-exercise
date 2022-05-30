@@ -15,7 +15,7 @@ test("should enter parking lot", async function () {
     new Date("2022-05-29T10:00:00")
   );
   const getParkingLotAfterEnter = await getParkingLot.execute("shopping");
-  expect(getParkingLotBeforeEnter.ocuppiedSpaces).toBe(1);
+  expect(getParkingLotAfterEnter.ocuppiedSpaces).toBe(1);
 });
 
 // test("should give error in plate", async function () {

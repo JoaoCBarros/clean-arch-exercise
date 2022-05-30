@@ -8,12 +8,14 @@ export default class ParkingLot {
     code: string,
     capacity: number,
     openHour: number,
-    closeHour: number
+    closeHour: number,
+    ocuppiedSpaces: number
   ) {
     this.code = code;
     this.capacity = capacity;
     this.openHour = openHour;
     this.closeHour = closeHour;
+    this.ocuppiedSpaces = ocuppiedSpaces;
   }
 
   isOpen(date: Date) {
