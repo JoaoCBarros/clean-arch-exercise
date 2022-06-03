@@ -10,7 +10,7 @@ export default class ParkingLotRepositoryMemory
       code: "shopping",
       capacity: 5,
       open_hour: 8,
-      close_hour: 23,
+      close_hour: 22,
     },
   ];
 
