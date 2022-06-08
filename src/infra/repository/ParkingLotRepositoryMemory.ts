@@ -37,4 +37,10 @@ export default class ParkingLotRepositoryMemory
 
     return Promise.resolve(parkingLot);
   }
+
+  async leaveParkedCar(code: string, plate: string): Promise<void> {
+    this.parkedCars = this.parkedCars.filter((parkedCar) => {
+      return parkedCar.code !== code && parkedCar.plate !== plate;
+    });
+  }
 }

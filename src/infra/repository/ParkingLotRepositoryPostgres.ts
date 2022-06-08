@@ -5,6 +5,9 @@ import db from "../database/database-pg";
 export default class ParkingLotRepositoryPostgres
   implements ParkingLotRepository
 {
+  leaveParkedCar(code: string, plate: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
   private readonly database_name = "clean_arch_db";
   async getParkingLot(code: string): Promise<ParkingLot> {
     const parkingLot = await db.oneOrNone(
