@@ -1,13 +1,11 @@
 import express, { Express, Request, Response } from "express";
-import GetParkingLot from "../../app/core/useCase/GetParkingLot";
-import ParkingLotRepositoryMemory from "../repository/ParkingLotRepositoryMemory";
+import ExpressAdapter from "../../app/core/adapter/ExpressAdapter";
+import ParkingLotController from "../../app/core/controller/ParkingLotController";
 const app = express();
-app.get("/parkingLots/:code", async (req: Request, res: Response) => {
-  const parkingLotRepositoryMemory = new ParkingLotRepositoryMemory();
-  const getParkingLot = new GetParkingLot(parkingLotRepositoryMemory);
-
-  res.send(await getParkingLot.execute(req.params.code));
-});
+app.get(
+  "/parkingLots/:code",
+  ExpressAdapter.create(ParkingLotController.getParkingLot)
+);
 
 app.listen(3000, () => {
   console.log("Express Server Running in PORT 3000");
