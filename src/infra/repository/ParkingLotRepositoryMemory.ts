@@ -22,7 +22,6 @@ export default class ParkingLotRepositoryMemory
     const parkingLotData = this.parkingLots.filter((item) => {
       return item.code === code;
     })[0];
-    console.log(this.parkedCars);
     const occupationSpaces = this.parkedCars.filter((item) => {
       return item.code === code;
     }).length;
