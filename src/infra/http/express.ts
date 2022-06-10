@@ -1,11 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import ExpressAdapter from "../../app/core/adapter/ExpressAdapter";
-import ParkingLotController from "../../app/core/controller/ParkingLotController";
+import { makeParkingLotController } from "../../app/core/factory/ParkingLotControllerFactory";
 const app = express();
-app.get(
-  "/parkingLots/:code",
-  ExpressAdapter.create(ParkingLotController.getParkingLot)
-);
+const expressAdapter = new ExpressAdapter(makeParkingLotController());
+app.get("/parkingLots/:code", expressAdapter.create());
 
 app.listen(3000, () => {
   console.log("Express Server Running in PORT 3000");

@@ -2,9 +2,11 @@ import ParkingLotRepositoryMemory from "../../../infra/repository/ParkingLotRepo
 import GetParkingLot from "../useCase/GetParkingLot";
 
 export default class ParkingLotController {
-  static async getParkingLot(params, body) {
-    const parkingLotRepositoryMemory = new ParkingLotRepositoryMemory();
-    const getParkingLot = new GetParkingLot(parkingLotRepositoryMemory);
-    return await getParkingLot.execute(params.code);
+  constructor(
+    private readonly getParkingLot: GetParkingLot,
+    private test: string
+  ) {}
+  async show(params, body) {
+    return await this.getParkingLot.execute(params.code);
   }
 }
