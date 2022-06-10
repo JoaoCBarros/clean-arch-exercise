@@ -14,6 +14,12 @@ export default class ParkingLotRepositoryMemory
   ];
   parkedCars = [];
 
+  async leaveParkingLot(code: string, plate: string): Promise<void> {
+    this.parkedCars = this.parkedCars.filter((item) => {
+      return item.code !== code && item.plate !== plate;
+    });
+  }
+
   async saveParkedCar(code: string, plate: string, date: Date): Promise<void> {
     this.parkedCars.push({ code, plate, date });
   }
